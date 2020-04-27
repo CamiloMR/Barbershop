@@ -1,5 +1,5 @@
 {
-  "name": "reserva-barberia",
+  "name": "barbershop",
   "version": "1.0.0",
   "description": "App para la reservar cita en una barbería",
   "main": "./server/index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CamiloMR/ProyectoTallerIS.git"
+    "url": "git+https://github.com/CamiloMR/Barbershop.git"
   },
   "author": "Juan Camilo Muñoz Ramírez",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CamiloMR/ProyectoTallerIS/issues"
+    "url": "https://github.com/CamiloMR/Barbershop/issues"
   },
-  "homepage": "https://github.com/CamiloMR/ProyectoTallerIS#readme",
+  "homepage": "https://github.com/CamiloMR/Barbershop#readme",
   "dependencies": {
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
@@ -29,6 +29,7 @@
     "supertest": "^4.0.2"
   },
   "devDependencies": {
+    "node-pre-gyp": "^0.12.0",
     "nodemon": "^2.0.2"
   }
 }

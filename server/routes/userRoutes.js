@@ -17,7 +17,6 @@ router.post('/createUser', async (req, res) => {
         password: bcrypt.hashSync(String(req.body.password), saltRound),
         profile: req.body.profile
     }
-    console.log(data)
     let user = new User()
     let result = await user.createUser(data)
     return res.status(result.status).send(result)
