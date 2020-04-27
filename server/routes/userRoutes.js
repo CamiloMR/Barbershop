@@ -13,6 +13,7 @@ router.post('/createUser', async (req, res) => {
     let data = {
         id_user: req.body.id_user,
         full_name: req.body.full_name,
+        email: req.body.email,
         phone: req.body.phone,
         password: bcrypt.hashSync(String(req.body.password), saltRound),
         profile: req.body.profile
