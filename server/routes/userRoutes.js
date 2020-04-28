@@ -5,7 +5,7 @@ const User = require('../controllers/userController')
 
 let saltRound = 15
 
-router.post('/createUser', async (req, res) => {
+router.post('/', async (req, res) => {
     if(!req.body){
         return res.status(400).sendStatus({ status: 400, success: false, message: "Bad Request", info: null })
     }

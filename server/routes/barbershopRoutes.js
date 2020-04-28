@@ -3,7 +3,7 @@ const router = express.Router()
 const Barbershop = require('../controllers/barbershopController')
 const User = require('../controllers/userController')
 
-router.post('/createBarbershop', async (req, res) => {
+router.post('/', async (req, res) => {
     if(!req.body){
         return res.status(400).sendStatus({ status: 400, success: false, message: "Bad Request", info: null })
     }
