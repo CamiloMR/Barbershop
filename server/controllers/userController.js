@@ -35,6 +35,18 @@ User.prototype = {
         } catch (error) {
             return msg.FAIL_RESPONSE(error)
         }
+    },
+    login: async (id) => {
+        try {
+            let res = await db.executeQuery("SELECT password FROM users WHERE id_user = ?", id)
+            if(res.length > 0){
+                return msg.SUCCESS_RESPONSE(res[0].password)
+            }else{
+                return msg.NOT_FOUND
+            }
+        } catch (error) {
+            return msg.FAIL_RESPONSE(error)
+        }
     }
 }
 

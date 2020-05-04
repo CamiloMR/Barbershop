@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt')
 const router = express.Router()
 const User = require('../controllers/userController')
 
-let saltRound = 15
+let saltRounds = 15
+const salt = bcrypt.genSaltSync(saltRounds)
 
 router.post('/', async (req, res) => {
     if(!req.body){
@@ -15,12 +16,32 @@ router.post('/', async (req, res) => {
         full_name: req.body.full_name,
         email: req.body.email,
         phone: req.body.phone,
-        password: bcrypt.hashSync(String(req.body.password), saltRound),
+        password: bcrypt.hashSync(String(req.body.password), salt),
         profile: req.body.profile
     }
     let user = new User()
     let result = await user.createUser(data)
     return res.status(result.status).send(result)
+})
+
+router.post('/login', async (req, res) => {
+    let id = req.body.id_user
+    let pass = String(req.body.password)
+    let user = new User()
+    let result = await user.login(id)
+
+    let userExist = await user.userExist(id)
+    if(!userExist){
+        return res.status(200).send('Usuario o contraseña incorrecta')
+    }else{
+        let passBD = result.info
+        let isValidPass = bcrypt.compareSync(pass, passBD)
+        if(isValidPass){
+            return res.status(result.status).send(result)
+        }else{
+            return res.status(result.status).send('Usuario o contraseña incorrecta')
+        }
+    }
 })
 
 module.exports = router
