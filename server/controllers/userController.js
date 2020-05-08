@@ -47,6 +47,14 @@ User.prototype = {
         } catch (error) {
             return msg.FAIL_RESPONSE(error)
         }
+    },
+    findUser: async (id) =>{
+        try {
+            let res = await db.executeQuery("SELECT * FROM users WHERE id_user = ?", id)
+            return msg.SUCCESS_RESPONSE(res)
+        } catch (error) {
+            return msg.FAIL_RESPONSE(error)
+        }
     }
 }
 

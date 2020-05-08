@@ -31,4 +31,17 @@ router.post('/', async (req, res) => {
 
 })
 
+router.get('/', async (req, res) => {
+    let barbershop = new Barbershop()
+    let result = await barbershop.allBarbershops()
+    return res.status(result.status).send(result.info)
+})
+
+router.get('/barber', async (req, res) => {
+    let id = req.body.id_barbershop
+    let barbershop = new Barbershop()
+    let result = await barbershop.findBarbershop(id)
+    return res.status(result.status).send(result.info)
+})
+
 module.exports = router

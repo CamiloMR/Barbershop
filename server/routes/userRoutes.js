@@ -44,4 +44,11 @@ router.post('/login', async (req, res) => {
     }
 })
 
+router.get('/profile', async (req, res) => {
+    let id = req.body.id_user
+    let user = new User()
+    let result = await user.findUser(id)
+    return res.status(result.status).send(result.info)
+})
+
 module.exports = router
